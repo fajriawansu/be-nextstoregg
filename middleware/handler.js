@@ -1,7 +1,7 @@
-const handleErrors = (err, req, res) => {
+const handleErrors = (err, req, res, to) => {
     req.flash('alertMessage', `${err.message}`)
     req.flash('alertStatus', 'danger')
-    res.redirect('/category')
+    res.redirect(to ? to : '/category')
 }
 
 const handleToast = (req, status, msg) => {

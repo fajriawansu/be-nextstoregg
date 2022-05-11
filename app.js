@@ -7,8 +7,9 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
 
-var dashboardReducer = require('./app/dashboard/router');
-var categoryReducer = require('./app/category/router');
+const dashboardReducer = require('./app/dashboard/router');
+const categoryReducer = require('./app/category/router');
+const nominalReducer = require('./app/nominal/router');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/adminlte', express.static(path.join(__dirname, '/node_modules/admin-lt
 
 app.use('/', dashboardReducer);
 app.use('/category', categoryReducer);
+app.use('/nominal', nominalReducer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

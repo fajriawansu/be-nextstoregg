@@ -1,0 +1,31 @@
+<table id="example2" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Nomor</th>
+      <th>Nama Koin</th>
+      <th>Jumlah Koin</th>
+      <th>Harga Koin</th>
+      <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% nominal.forEach(function(v,k){ %>
+        <tr>
+          <td><%= k+1 %></td>
+          <td><%= v.coinName %></td>
+          <td><%= v.coinQuantity %></td>
+          <td><%= v.price %></td>
+          <td>
+            <form action="/category/delete/<%= v._id %>?_method=DELETE" method="post">
+              <a href="/category/edit/<%=v._id %>" class="btn btn-warning">
+                <i class="fas fa-pencil-alt"></i>Ubah
+              </a>
+              <button class="btn btn-danger" >
+                <i class="fas fa-trash">Hapus</i>
+              </button>
+            </form>
+          </td>
+        </tr>
+    <%  }) %>
+    </tbody>
+  </table>
