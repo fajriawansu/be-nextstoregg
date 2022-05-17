@@ -16,11 +16,11 @@
           <td><%= v.coinQuantity %></td>
           <td><%= v.price %></td>
           <td>
-            <form action="/category/delete/<%= v._id %>?_method=DELETE" method="post">
-              <a href="/category/edit/<%=v._id %>" class="btn btn-warning">
+            <form action="/nominal/delete/<%= v._id %>?_method=DELETE" method="post">
+              <a href="/nominal/edit/<%=v._id %>" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i>Ubah
               </a>
-              <button class="btn btn-danger" >
+              <button class="btn btn-danger btn-sm" >
                 <i class="fas fa-trash">Hapus</i>
               </button>
             </form>

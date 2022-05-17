@@ -43,46 +43,46 @@ module.exports = {
             handleErrors(e, req, res, '/nominal');
         }
     },
-    // viewEdit: async (req, res) => {
-    //     try {
-    //         const { id } = req.params
+    viewEdit: async (req, res) => {
+        try {
+            const { id } = req.params
 
-    //         const category = await Nominal.findOne({_id: id});
-    //         // console.log(category);
-    //         res.render('admin/category/edit', {
-    //             category
-    //         })
-    //     } catch(e){
-    //         handleErrors(e, req, res);
-    //     }
-    // },
-    // actionEdit: async (req, res) => {
-    //     try {
-    //         const { id } = req.params;
-    //         const { name } = req.body;
+            const nominal = await Nominal.findOne({_id: id});
+            // console.log(nominal, 'nominal');
+            res.render('admin/nominal/edit', {
+                nominal
+            })
+        } catch(e){
+            handleErrors(e, req, res, '/nominal');
+        }
+    },
+    actionEdit: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { coinName, coinQuantity, price } = req.body;
 
-    //         await Nominal.findOneAndUpdate({
-    //             _id: id
-    //         }, { name })
+            await Nominal.findOneAndUpdate({
+                _id: id
+            }, { coinName, coinQuantity, price })
             
-    //         handleToast(req, "success",  "Berhasil ubah kategori")
-    //         res.redirect('/category')
-    //     } catch(e){
-    //         handleErrors(e, req, res);
-    //     }
-    // },
-    // actionDelete: async (req,res) => {
-    //     try {
-    //         const { id } = req.params;
-    //         await Nominal.findOneAndRemove({
-    //             _id: id
-    //         });
+            handleToast(req, "success",  "Berhasil ubah nominal")
+            res.redirect('/nominal')
+        } catch(e){
+            handleErrors(e, req, res, '/nominal');
+        }
+    },
+    actionDelete: async (req,res) => {
+        try {
+            const { id } = req.params;
+            await Nominal.findOneAndRemove({
+                _id: id
+            });
 
-    //         handleToast(req, "success",  "Berhasil hapus kategori")
-    //         res.redirect('/category');
+            handleToast(req, "success",  "Berhasil hapus nominal")
+            res.redirect('/nominal');
 
-    //     }catch(e){
-    //         handleErrors(e, req, res);
-    //     }
-    // }
+        }catch(e){
+            handleErrors(e, req, res, '/nominal');
+        }
+    }
 }
